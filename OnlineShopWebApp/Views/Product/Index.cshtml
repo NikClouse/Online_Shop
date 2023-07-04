@@ -1,0 +1,37 @@
+﻿@model ProductViewModel
+
+</div>
+<div class="container">
+     <div class=" row">   
+      <div class="col-8">
+            <img class="img-thumbnail" src="@Model.ImagePath">
+       
+     
+            
+                <div class="row"
+                   <h3 ><big></big><b>Название:@Model.Name</b></big></h3>
+                  </div>
+                  <div class="row">
+                   <h5>Цена:@Model.Cost руб</h5>
+                </div>
+        </div>
+
+        <div class=" col-4 ">
+            <div class="row"
+                <h5>Описание:@Model.Description</h5>
+                <br />
+                <br />
+            
+          
+                <a class=" btn btn-outline-success" href="/home/index" role="button">Продолжить покупку</a>
+                  <br />
+                  <br />
+                <a class="  btn btn-outline-success" href="/cart/add?productId=" role="button">Добавить в корзину</a>
+
+            </div>
+            
+         </div>
+    
+     </div>
+
+</div>

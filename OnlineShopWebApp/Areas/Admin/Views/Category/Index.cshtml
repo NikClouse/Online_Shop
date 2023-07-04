@@ -1,0 +1,44 @@
+﻿@model List<CategoryViewModel>
+
+	<div class="row">
+	@await Html.PartialAsync("AdminLeftMenu")
+
+	<div class="col-9">
+		<div class="row">			
+			<h3>Список Категорий</h3>
+		</div>
+		<a 
+			asp-area="Admin"
+		   asp-controller="Category"
+		   asp-action="Create">Добавить новую категорию</a>
+		<div class="row">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>№</th>
+						<th>Название</th>						
+						<th> </th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					@for (int i = 0; i < Model.Count; i++)
+					{
+						<tr>
+							<td>@(i + 1)</td>
+							<td>@Model[i].CategoryName</td>
+							
+							<td><a 
+								asp-area="Admin"
+							   asp-controller="Category"
+								asp-action="Remove"
+							   asp-route-categoryId="@Model[i].Id">Удалить</a>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+

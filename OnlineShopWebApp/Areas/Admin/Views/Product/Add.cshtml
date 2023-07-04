@@ -1,0 +1,72 @@
+﻿@model AddProductViewModel
+
+<form method="post" enctype="multipart/form-data">
+    <div>
+        <h3>Создание нового продукта</h3>
+    </div>
+
+    <div class="text-danger font-weigh-bold" asp-validation-summary="All"></div>
+
+    <div class=" row">
+        <div class="col-6">
+            <label asp-for="Name"></label> <br />
+            <input class="col-form-label-sm" asp-for="Name" />
+            <span asp-validation-for="Name"></span>
+        </div>
+    </div>
+
+    <div class=" row">
+        <div class="col-6">
+            <label asp-for="Description"></label> <br />
+            <input class="col-form-label-sm" asp-for="Description" />
+            <span asp-validation-for="Description"></span>
+        </div>
+    </div>
+
+    <div class=" row">
+        <div class="col-6">
+            <label asp-for="Cost"></label> <br />
+            <input type="number" class="col-form-label-sm" asp-for="Cost" />
+            <span asp-validation-for="Cost"></span>
+        </div>
+    </div>
+
+
+    <div class=" row">
+        <div class="col-6">
+            <label asp-for="UploadedFiles">Загрузить изображение</label> <br />
+            <input type="file" name="UploadedFiles" multiple accept="img/*" class="col-form-label-sm" />
+            <span asp-validation-for="UploadedFiles"></span>
+        </div>
+    </div>
+
+    <br />
+    <div class=" row">
+        <div class="col-6">
+            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Категории
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    @foreach(var category in Model.Categories)
+                    {
+                       <br />
+                  
+                         <input class="form-check-input" name="SelectedCategoryName" type="radio" value="@category.CategoryName" />
+                         <label class="form-check-label" for="flexCheckDefault">@category.CategoryName</label>
+                    }
+          
+            </div>
+        </div>
+
+        
+    </div>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-6">
+          
+            <button class="btn btn-outline-primary" type="submit" asp-area="Admin" asp-controller="Product" asp-action="Add">Создать</button>
+        </div>
+    </div>
+</form>
+

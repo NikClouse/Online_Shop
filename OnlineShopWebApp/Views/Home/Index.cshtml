@@ -1,0 +1,61 @@
+﻿@model List<ProductViewModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<link rel="stylesheet" href=" ~ /css/image_css.css" />
+<link href="/css/bootstrap.css" />
+
+<div class="text-center">
+    <h1 class="display-4">Хуросон</h1> 
+  
+</div>
+<br />
+<br />
+<div class="container text-center">
+    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+  
+    @foreach (var product in Model)
+    {
+            <div class="col-3 card shadow-none">
+
+            <img width="250" height="170" class=" card-img-top" src="@product.ImagePath">
+          
+            <div class=" card-body p-4">
+
+                <a style="color:black" class=" btn btn-outline-success"
+                   asp-area=""
+                   asp-controller="Product"
+                   asp-action="Index"
+                   asp-route-id="@product.Id">
+              
+                    <h5>@product.Name </h5>
+                        </a><br>
+
+                <h5>@product.Cost &#8381</h5>
+                    <div class="btn-group btn-group-sm">
+                <a class=" btn btn-outline-success "
+                   asp-area=""
+                   asp-controller="Cart"
+                   asp-action="Add"
+                   asp-route-productId="@product.Id"
+                  role="button"> Добавить в корзина</a>
+
+                <a class=" btn btn-outline-success"
+               asp-area=""
+               asp-controller="Favorite"
+               asp-action="Add"
+               asp-route-productId="@product.Id"
+               role="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="red" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                    </svg>
+                </a>
+                </div>
+              
+            </div>
+        </div>
+
+
+    }
+</div>
+</div>

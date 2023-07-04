@@ -1,0 +1,38 @@
+﻿@model List<ProductViewModel>
+
+@{
+	ViewData["Title"] = "Поиск";
+}
+
+@if (Model.Count == 0)
+{
+	<div class="card">
+		<div class="card-body">
+			<p class="card-text bg-danger text-white font-weight-bold">
+				Такой товар отсутствует!
+			</p>
+		</div>
+	</div>
+}
+else
+{
+	<div class="row">
+		@foreach (var product in Model)
+		{
+			<div class="col-3 card shadow-none">
+				<img class="card-img-top" src=@product.ImagePath alt="Изображение товара">
+				<div class="card-body">
+					<a style="color:none" href="/product/index/@product.Id">						
+					</a>
+					<h5>Название: @product.Name</h5>
+					<h5>Цена: @product.Cost &#8381</h5>
+					<h5>Описание: @product.Description</h5>
+
+
+					<a class=" btn btn-outline-success" href="/home/index" role="button">Продолжить покупку</a>
+					<a class="btn btn-outline-primary" href="/cart/add?productId=@product.Id" role="button">Добавить в корзину</a>					
+				</div>
+			</div>
+		}
+	</div>
+}

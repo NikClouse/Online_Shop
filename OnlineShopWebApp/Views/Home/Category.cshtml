@@ -1,0 +1,31 @@
+﻿@model List<CategoryViewModel>
+
+<form method="post" enctype="multipart/form-data">
+
+<div class=" row">
+    <div class="col-6">
+        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Категории
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                    <button class="btn btn-outline-primary" type="submit" name="Id" asp-controller="Product" asp-action="CategoryProduct">@Model[i].CategoryName</button>
+                    <br/>
+
+            }             
+            
+
+        </div>
+    </div>
+    
+</div>
+
+</form>
+
+
+
+
+
+
+

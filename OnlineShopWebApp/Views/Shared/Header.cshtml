@@ -1,0 +1,79 @@
+﻿@using OnlineShop.Db;
+@using OnlineShopWebApp;
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="btn btn-success btn-lg mr-4" asp-area="" asp-controller="Home" asp-action="Index">Хуросон</a> 
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+           
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="btn btn-primary btn-sm mr-2" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary btn-sm mr-2" asp-area="" asp-controller="Home" asp-action="Contact">Контакт</a>
+                    </li>
+
+                    <li>
+                         <div class="text-left">
+                           <a class="btn btn-primary btn-sm mr-2"  asp-controller="Home" asp-action="Category"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" class="bi bi-search" viewBox="0 0 16 16">
+                           <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                           </svg>Каталог </a>
+                           </div>
+                    </li>                            
+                    
+                        @if(User.Identity.IsAuthenticated)
+                        {
+                           <li class="nav-item text-dark">
+                               @User.Identity.Name
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="btn btn-info btn-sm mr-2" btn-sm mr-2" asp-area="" asp-controller="Account" asp-action="Logout"> Выйти</a>
+                            </li>                            
+                        }
+                        else
+                        {
+                        <li class="nav-item">
+                            <a class="btn btn-info btn-sm mr-2" btn-sm mr-2" asp-area="" asp-controller="Account" asp-action="Login"> Войти</a>
+                        </li>
+                        }
+                    @if (User.IsInRole(Constans.AdminRoleName))
+                    {
+                        <li class="nav-item">
+                            <a class="btn btn-info btn-sm mr-2" asp-area="Admin" asp-controller="Order" asp-action="Index"> Админ</a>
+                        </li>
+                    }
+
+                        
+                   
+                    <li class="nav-item">
+                        
+                        <form method="post">
+							<div class="input-group">
+                        <input class="col-form-label-sm" type="text" name="search" placeholder="Поиск" required />
+                                <button type="submit" asp-controller="Home" asp-action="Search">
+                                    <i class="bi bi-search">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                        </svg> Найти
+                                    </i>
+                                </button>
+                        </div>
+                        </form>
+                    </li>
+                   
+                   
+                </ul>
+               
+                <a class="nav-link text-dark" asp-area="" asp-controller="Favorite" asp-action="Index"> @await Component.InvokeAsync("Favorite")</a>
+                &nbsp
+                @await Component.InvokeAsync("Cart")
+            </div>
+        </div>
+    </nav>
+</header>

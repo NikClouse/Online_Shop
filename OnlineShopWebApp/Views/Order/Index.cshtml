@@ -1,0 +1,34 @@
+﻿@model UserDeliveryInfoViewModel
+
+
+<form asp-action="Order" asp-controller="Index">
+
+	<div class=" col">
+		
+		<div>
+			<label asp-for="Name"> Введите ФИО </label> <br />
+			<input class="col-form-label-sm" asp-for="Name" />
+			<span asp-validation-for="Name"></span>		
+		</div>
+
+		<div>
+		   <label asp-for="Address">Введите Адрес </label> <br />
+		   <input class="col-form-label-sm" asp-for="Address" />
+		   <span asp-validation-for="Address"></span>
+		
+		</div>		
+		
+		<div>
+			<label asp-for="Phone">Введите Телфон</label> <br />
+			<input class="col-form-label-sm" asp-for="Phone" />
+			<span asp-validation-for="Phone"></span>
+		
+		</div>
+		<br/>
+		
+		<button class="btn btn-outline-success" type="submit" asp-controller="Order" asp-action="Buy">Оформить заказ</button>
+	
+	</div>
+
+</form>
+

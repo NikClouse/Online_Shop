@@ -1,0 +1,58 @@
+﻿@model EditProductViewModel
+
+<form method="post" enctype="multipart/form-data">
+	<div>
+		<h3>Редактировать продукта</h3>
+	</div>
+
+	<div class="text-danger font-weigh-bold" asp-validation-summary="All"></div>
+
+	<input type="hidden" name="Id" value="@Model?.Id" />
+
+	<div class=" row">
+		<div class="col-6">
+			<label asp-for="Name"></label> <br />
+			<input class="col-form-label-sm" asp-for="Name" value="@Model?.Name" />
+			<span asp-validation-for="Name"></span>
+		</div>
+	</div>
+
+	<div class=" row">
+		<div class="col-6">
+			<label asp-for="Description"></label> <br />
+			<input class="col-form-label-sm" asp-for="Description" value="@Model?.Description" />
+			<span asp-validation-for="Description"></span>
+		</div>
+	</div>
+
+	<div class=" row">
+		<div class="col-6">
+			<label asp-for="Cost"></label> <br />
+			<input  class="col-form-label-sm" asp-for="Cost" value="@Model?.Cost" />
+			<span asp-validation-for="Cost"></span>
+		</div>
+	</div>
+	<br />
+	<div class=" row">
+		<div class="col-6">
+			<label >Изображения</label> <br />
+			<input type="hidden" asp-for="@Model.ImagesPaths" value="@Model.ImagesPaths"/>
+			@foreach(var imagePath in Model.ImagesPaths)
+			{
+				<div style="padding:5px">
+					<img src="@imagePath" width="150" height="150" />
+				</div>
+			}
+		</div>
+	</div>
+	<br />
+	<div class="from-group">
+		<label>Загрузить новые изображения</label>
+		<input type="file" name="UploadedFiles" multiple accept="img/*" class="form-control"/>
+	</div>
+
+	<br />
+	<div>
+		<button type="submit" asp-area="Admin" asp-controller="Product" asp-action="Edit">Обнавить</button>
+	</div>
+</form>

@@ -1,0 +1,62 @@
+﻿@model Register
+@{
+	ViewData["Title"] = " Регистрации";
+}
+
+<form method="post"> 
+
+	<div>
+		<h3 class="text-muted" .text-muted> Регистрации</h3>
+	</div>
+	<br />
+	<div class="validation" asp-validation-summary="ModelOnly" class="text-danger"> </div>
+	<input type="hidden" name="returnUrl" value="@Model.ReturnUrl"/>
+	
+
+<div class=" row">
+	<div class="col">
+		<label asp-for="UserName">Имя</label> <br />
+			<input class="col-form-label-sm" asp-for="UserName"  />
+			<span asp-validation-for="UserName"></span>
+	</div>
+</div>
+
+<div class=" row">
+		<div class="col">
+			<label asp-for="Phone">Телфон</label> <br />
+			<input class="col-form-label-sm"  asp-for="Phone" />
+			<span asp-validation-for="Phone"></span>
+		</div>
+</div>
+
+<div class=" row">
+		<div class="col">
+			<label asp-for="Email">Почта</label> <br />
+			<input class="col-form-label-sm" asp-for="Email" />
+			<span asp-validation-for="Email"></span>
+        </div>
+</div>
+
+<div class=" row">
+	     <div class="col">
+
+			<label asp-for="Password">Парол</label> <br />
+			<input class="col-form-label-sm" asp-for="Password" />
+			<span asp-validation-for="Password"></span>
+	     </div>
+</div>
+
+<div class=" row">
+		<div class="col">
+			<label asp-for="ConfirmPassword">Подтверждать пароль</label> <br />
+			<input class="col-form-label-sm" asp-for="ConfirmPassword" />
+			<span asp-validation-for="ConfirmPassword"></span>
+		</div>
+</div>
+  <br />
+  
+	  
+	       <button type="submit"  asp-controller="Account" asp-action="Register">Зарегистрироваться</button>
+
+  
+</form>

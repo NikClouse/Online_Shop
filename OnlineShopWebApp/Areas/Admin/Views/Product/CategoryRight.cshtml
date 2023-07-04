@@ -1,0 +1,22 @@
+﻿@model List<CategoryRightViewModel>
+
+<form method="post">
+	<div>
+		<h3>Текущие категори для пользователя </h3>
+	</div>
+	<input type="hidden" name="name" value="@Model">
+	<br />
+	@foreach(var category in Model)
+	{
+
+		<br />		
+		<input class="form-check-input" name="ProductCategoryViewModel[@category.CategoryName]" type="checkbox" value="true" checked />
+		<label class="form-check-label" for="flexCheckDefault">@category.CategoryName</label>
+
+	}
+	<div>
+		<button type="submit" class="btn btn-secondary " asp-area="Admin" asp-controller="Product" asp-action="CategoryRight">Выбрать</button>
+	</div>
+	
+	
+</form>
